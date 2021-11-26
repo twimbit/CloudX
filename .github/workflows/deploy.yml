@@ -41,5 +41,5 @@ jobs:
           key: ${{ secrets.CLOUDX }}
           port: 22
           script: |
-            docker-compomse down
+            docker-compose down
             docker-compose up -d
