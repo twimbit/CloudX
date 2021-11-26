@@ -25,7 +25,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: run docker-compose
-        run:  docker-compose -f "srv/docker-compose.yml" up -d
+        run: |
+          docker volume create --name=caddy_data
+          docker-compose -f "srv/docker-compose.yml" up -d
       
       - name: Stop docker
         run : docker-compose -f "srv/docker-compose.yml" down
