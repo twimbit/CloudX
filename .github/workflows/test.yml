@@ -26,9 +26,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: run docker-compose
         run: |
+          cd srv
           docker volume create --name=caddy_data
-          docker-compose -f "srv/docker-compose.yml" up -d
+          docker-compose -f "docker-compose.yml" up -d
       
       - name: Stop docker
-        run : docker-compose -f "srv/docker-compose.yml" down
+        run : docker-compose -f "docker-compose.yml" down
         
