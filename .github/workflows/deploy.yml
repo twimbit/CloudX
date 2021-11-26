@@ -33,4 +33,4 @@ jobs:
           remote_port: 22
           remote_user: root
           remote_key: ${{ secrets.CLOUDX }}
-          rsh: "docker-compose down | docker-compose up -d " 
+          rsh: "root@143.244.131.156 'bash -s' < script.sh " 
