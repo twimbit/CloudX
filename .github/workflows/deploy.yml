@@ -34,12 +34,12 @@ jobs:
           remote_user: root
           remote_key: ${{ secrets.CLOUDX }}
       - name: Run command
-        uses: appleboy/ssh-action@master
+      - name: ls -a via ssh
+        uses: fifsky/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: root
-          key: ${{ secrets.CLOUDX }}
-          port: 22
-          script: |
+          command: |
             docker-compose down 
             docker-compose up -d --remove-orphans
+          host: ${{ secrets.HOST }}
+          user: root
+          key: ${{ secrets.CLOUDX }}
