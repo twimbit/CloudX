@@ -19,7 +19,7 @@ services:
       - AVATAR_ALT=twimbit logo
       - NAME=Project X
       - BIO=where we try different technology and opensource frameworks
-      - FOOTER=We <3 Opensource
+      - FOOTER=We ❤️ Opensource
     ports:
       - 8080:3000
     restart: unless-stopped
