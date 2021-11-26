@@ -29,14 +29,14 @@ jobs:
           switches: -avzr --exclude '.git' --exclude '.github'
           path: srv/
           remote_path: /
-          remote_host: 143.244.131.156
+          remote_host: ${{ secrets.HOST }}
           remote_port: 22
           remote_user: root
           remote_key: ${{ secrets.CLOUDX }}
       - name: Run command
         uses: appleboy/ssh-action@master
         with:
-          host: 143.244.131.156
+          host: ${{ secrets.HOST }}
           username: root
           key: ${{ secrets.CLOUDX }}
           port: 22
