@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+ links:
+    image: ghcr.io/techno-tim/littlelink-server:latest
+    # dockerhub is also supported timothystewart6/littlelink-server
+    # image: timothystewart6/littlelink-server:latest
+    container_name: links
+    environment:
+      - META_TITLE=Project X
+      - META_DESCRIPTION=Where we try different techology and opensource frameworks
+      - META_AUTHOR=twimbit@tech
+      - LANG=en
+      - META_INDEX_STATUS=all
+      - GA_TRACKING_ID=G-XXXXXXXXXX
+      - THEME=Dark
+      - FAVICON_URL=https://media.glassdoor.com/sqll/3283337/twimbit-squarelogo-1596358332921.png
+      - AVATAR_URL=https://www.pngkit.com/png/full/177-1779393_project-x-logo-png.png
+      - AVATAR_2X_URL=https://www.pngkit.com/png/full/177-1779393_project-x-logo-png.png
+      - AVATAR_ALT=twimbit logo
+      - NAME=Project X
+      - BIO=where we try different technology and opensource frameworks
+      - FOOTER=We <3 Opensource
+    ports:
+      - 8080:3000
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+
+ caddy:
+    image: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:
