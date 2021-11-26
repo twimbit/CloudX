@@ -31,5 +31,7 @@ jobs:
           docker-compose -f "docker-compose.yml" up -d
       
       - name: Stop docker
-        run : docker-compose -f "docker-compose.yml" down
+        run : |
+          cd srv
+          docker-compose -f "docker-compose.yml" down
         
